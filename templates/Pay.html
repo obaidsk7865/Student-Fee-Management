@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='pay.css')}}">
+</head>
+{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<center><b>{{ message }}</b></center>
+{% endfor %} {% endif %} {% endwith %}
+
+<body>
+    <h1><strong>Payment Successful!</strong></h1>
+    <a href="{{url_for('view_course')}}"><button>Back</button></a>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Fee Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='status.css') }}">
+</head>
+
+</head>
+{% with messages = get_flashed_messages() %} {% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} {% endwith %}
+
+<body>
+    <h1>Students Status</h1>
+    <table border="1px">
+        <tr>
+            <th>Name</th>
+            <th>Course_id</th>
+            <th>Total_amount</th>
+            <th>Amount_paid</th>
+            <th>Remaining_amount</th>
+            <th>Status</th>
+
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.course_id }}</td>
+            <td>{{ student.total_amount }}</td>
+            <td>{{ student.amount_paid }}</td>
+            <td>{{ student.remaining_amount }}</td>
+            <td>{{ student.feestatus }}</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <center> <a href="{{url_for('add_course')}}" class="a"><button>Back</button></a></center>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<center><b>{{ message }}</b></center>
+{% endfor %} {% endif %} {% endwith %}
+
+<body>
+    <div class="container">
+        <h1>Admin Login</h1>
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your name" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <input type="submit">
+        </form>
+    </div>
+</body>
+
+</html>

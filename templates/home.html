@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fee Management System - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+
+{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<center>
+    <li>{{ message }}</li>
+</center>
+{% endfor %} {% endif %} {% endwith %}
+<center>
+
+    <body>
+        <h1>Course List</h1>
+        <ul>
+            {% for course in courses %}
+            <li><a href="/fees?course_id={{ course[0] }}">{{ course[1] }}</a></li>
+            {% endfor %}
+            <!--    {% for course in courses %}
+        <li><a href="/delete/{{ course[0] }}">{{ course[1] }}</a></li>
+        {% endfor %} -->
+
+        </ul>
+
+
+
+        <a href="{{url_for('logout')}}"><Button>Logout</Button></a>
+
+
+
+        <!-- <h1>Student List</h1>
+    <ul>
+        {% for student in students %}
+        <li><a href="/fees?student_id={{ student[0] }}">{{ student[1] }}</a></li>
+        {% endfor %}
+    </ul>
+    <h1>Fee List</h1>
+    <ul>
+        {% for fee in fees %}
+        <li><a href="/fees?fee_id={{ fee[0] }}">{{ fee[1] }}</a></li>
+        {% endfor %}
+    </ul> -->
+    </body>
+</center>
+
+</html>

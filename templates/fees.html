@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fee Management System - Course Fees</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fees.css') }}">
+</head>
+
+{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<center>
+    <li>{{ message }}</li>
+</center>
+{% endfor %} {% endif %} {% endwith %}
+
+<body>
+    <center>
+        <h1>Course: {{ course[1] }}</h1>
+        <p>Course Fee: ₹{{ course[2] }}</p>
+
+        <h2>Payment Form</h2>
+        <form method="POST" action="/submit">
+            <input type="hidden" name="course_id" value="{{ course[0] }}">
+            <label for="student_name">Student Name:</label>
+            <input type="text" name="student_name" id="student_name" required><br>
+            <label for="amount_paid">Amount Paid:</label>
+            <input type="number" name="amount_paid" id="amount_paid" min="0" step="0.01" required><br>
+            <input type="submit" value="Submit">
+        </form>
+        <br>
+        <a href="{{url_for('view_course')}}"><button>Back</button></a>
+    </center>
+
+</body>
+
+</html>
